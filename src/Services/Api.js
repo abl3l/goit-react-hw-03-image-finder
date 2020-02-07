@@ -6,4 +6,4 @@ export const searchByQuery = (query = '', page = 1) => {
   );
 };
 
-export const a = 2 + 3;
+export const a = 2;
