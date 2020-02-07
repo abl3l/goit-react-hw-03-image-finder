@@ -48,7 +48,6 @@ export default class App extends Component {
       {
         category: value,
         images: [],
-        pageNumber: 1,
         isLoading: true,
       },
       this.fetchImg(value),
@@ -84,7 +83,7 @@ export default class App extends Component {
     });
   };
 
-  closeModal = e => {
+  closeModal = () => {
     this.setState({
       isModalOpen: false,
     });
