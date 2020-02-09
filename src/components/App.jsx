@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Loader from './Loader/Loader';
-import * as api from '../Services/Api';
-import Searchbar from './Searchbar/Searchbar';
-import ImageGallery from './ImageGallery/ImageGallery';
-import Button from './Button/Button';
-import Modal from './Modal/Modal';
+import Loader from './Loader/Loader.jsx';
+import * as api from '../services/Api';
+import Searchbar from './Searchbar/Searchbar.jsx';
+import ImageGallery from './ImageGallery/ImageGallery.jsx';
+import Button from './Button/Button.jsx';
+import Modal from './Modal/Modal.jsx';
 
 export default class App extends Component {
   state = {

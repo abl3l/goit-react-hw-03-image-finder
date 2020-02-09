@@ -1,6 +1,6 @@
 import React from 'react';
 import T from 'prop-types';
-import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
+import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem.jsx';
 import style from './ImageGallery.module.css';
 
 const ImageGallery = ({ items, openModal }) => {
