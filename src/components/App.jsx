@@ -5,6 +5,7 @@ import Searchbar from './Searchbar/Searchbar.jsx';
 import ImageGallery from './ImageGallery/ImageGallery.jsx';
 import Button from './Button/Button.jsx';
 import Modal from './Modal/Modal.jsx';
+import styles from './App.module.css';
 
 export default class App extends Component {
   state = {
@@ -17,13 +18,9 @@ export default class App extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const { category, page } = this.state;
-    if (page !== prevState.page) {
-      api.searchByQuery(category, page).then(response =>
-        this.setState(state => ({
-          images: [...state.images, ...response.data.hits],
-        })),
-      );
+    const { images } = this.state;
+    if (images !== prevState.images) {
+      this.scrollFunc();
     }
   }
 
@@ -35,11 +32,15 @@ export default class App extends Component {
   };
 
   loadMore = () => {
-    this.setState(
-      prevState => ({
-        page: prevState.page + 1,
-      }),
-      this.scrollFunc(),
+    const { category, page } = this.state;
+
+    this.setState(prevState => ({
+      page: prevState.page + 1,
+    }));
+    api.searchByQuery(category, page).then(response =>
+      this.setState(state => ({
+        images: [...state.images, ...response.data.hits],
+      })),
     );
   };
 
@@ -92,7 +93,7 @@ export default class App extends Component {
   render() {
     const { isModalOpen, imageToOpen, images, isLoading } = this.state;
     return (
-      <section>
+      <section className={styles.wrap}>
         {' '}
         {isLoading && <Loader />}{' '}
         <Searchbar onSubmit={this.handleChangeCategory} />{' '}
